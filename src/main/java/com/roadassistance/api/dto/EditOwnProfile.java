@@ -4,12 +4,10 @@ public class EditOwnProfile {
 	String name;
 	String surname;
 	String phone;
-	String feedback;
-	public EditOwnProfile(String name, String surname, String phone, String feedback) {
+	public EditOwnProfile(String name, String surname, String phone) {
 		this.name = name;
 		this.surname = surname;
 		this.phone = phone;
-		this.feedback = feedback;
 	}
 	public EditOwnProfile() {
 	}
@@ -30,12 +28,6 @@ public class EditOwnProfile {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public String getFeedback() {
-		return feedback;
-	}
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
 	}
 	
 }

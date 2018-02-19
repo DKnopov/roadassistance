@@ -10,8 +10,8 @@ public class HelpRequest {
 	double direction;
 	int status;
 
-	public HelpRequest(long requestingUser, long acceptingUser, String problemType, String description, double lat,
-			double lng, double direction, int status) {
+	public HelpRequest(long requestingUser, long acceptingUser, String problemType, String description,
+			double lat, double lng, double direction, int status) {
 		this.requestingUser = requestingUser;
 		this.acceptingUser = acceptingUser;
 		this.problemType = problemType;
