@@ -46,5 +46,6 @@ public class RespondToHelpRequest {
 		this.direction = direction;
 	}
 	
+	
 
 }
