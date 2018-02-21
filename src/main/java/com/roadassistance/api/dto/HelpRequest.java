@@ -83,6 +83,8 @@ public class HelpRequest {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
+	
 	
 
 }

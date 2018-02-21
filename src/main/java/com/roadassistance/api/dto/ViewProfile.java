@@ -57,5 +57,6 @@ public class ViewProfile {
 	public void setFeedback(Feedback[] feedback) {
 		this.feedback = feedback;
 	}
+	
 
 }
