@@ -162,11 +162,22 @@ public class RoadAssistanceHandler {
 	}
 	@GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_BY_FILTER)
 	@CrossOrigin
-	public GetProblemsByFilter getProblemsByFilter(@RequestParam double lat
+	public GetProblemsByFilter[] getProblemsByFilter(@RequestParam double lat
 			,double lng,double radius,int[] problemTypes) {
 			Random rnd=new Random();
-			GetProblemsByFilter test=new GetProblemsByFilter(rnd.nextLong(), rnd.nextLong(), rnd.nextLong(), rnd.nextInt(11), "Some description", rnd.nextDouble(), rnd.nextDouble(), rnd.nextInt(), rnd.nextDouble());
-				return test;
+			boolean isPositive=rnd.nextBoolean();
+			double randomLat=isPositive?rnd.nextDouble()*180:rnd.nextDouble()*-180;
+			isPositive=rnd.nextBoolean();
+			double randomLng=isPositive?rnd.nextDouble()*360:rnd.nextDouble()*-360;
+			GetProblemsByFilter test=new GetProblemsByFilter(rnd.nextLong(), rnd.nextLong(), -1, rnd.nextInt(11), "Some description",
+					randomLat, randomLng, rnd.nextInt(11), rnd.nextDouble()*180);
+			GetProblemsByFilter nextTest=new GetProblemsByFilter(rnd.nextLong(), rnd.nextLong(), -1, rnd.nextInt(11), "Some description",
+					randomLat, randomLng, rnd.nextInt(11), rnd.nextDouble()*180);
+			GetProblemsByFilter[] arr=new GetProblemsByFilter[2];
+			arr[0]=test;
+			arr[1]=nextTest;
+			
+				return arr;
 		
 	}
 
