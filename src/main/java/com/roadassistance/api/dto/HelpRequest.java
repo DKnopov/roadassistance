@@ -13,7 +13,6 @@ public class HelpRequest {
 	
 	public HelpRequest(long requestingUser, long acceptingUser, int problemType, int answer, String description,
 			double lat, double lng, double direction, int status) {
-		super();
 		this.requestingUser = requestingUser;
 		this.acceptingUser = acceptingUser;
 		this.problemType = problemType;
