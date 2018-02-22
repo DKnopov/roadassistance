@@ -1,6 +1,7 @@
 package com.roadassistance.controller;
 
 import java.io.IOException;
+import java.util.Random;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import com.roadassistance.api.dto.AcceptHelp;
 import com.roadassistance.api.dto.EditOwnProfile;
 import com.roadassistance.api.dto.Feedback;
 import com.roadassistance.api.dto.GetHelperCoordinates;
+import com.roadassistance.api.dto.GetProblemsByFilter;
 import com.roadassistance.api.dto.HelpRequest;
 import com.roadassistance.api.dto.Place;
 import com.roadassistance.api.dto.PushHelperLocation;
@@ -157,6 +159,15 @@ public class RoadAssistanceHandler {
 	public GetHelperCoordinates getHelperLocation(@RequestParam long userId) {
 		GetHelperCoordinates coordinates=new GetHelperCoordinates(userId, 12, 12, 10);
 		return coordinates;
+	}
+	@GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_BY_FILTER)
+	@CrossOrigin
+	public GetProblemsByFilter getProblemsByFilter(@RequestParam double lat
+			,double lng,double radius,int[] problemTypes) {
+			Random rnd=new Random();
+			GetProblemsByFilter test=new GetProblemsByFilter(rnd.nextLong(), rnd.nextLong(), rnd.nextLong(), rnd.nextInt(11), "Some description", rnd.nextDouble(), rnd.nextDouble(), rnd.nextInt(), rnd.nextDouble());
+				return test;
+		
 	}
 
 }

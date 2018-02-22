@@ -4,6 +4,7 @@ import com.roadassistance.api.dto.AcceptHelp;
 import com.roadassistance.api.dto.EditOwnProfile;
 import com.roadassistance.api.dto.Feedback;
 import com.roadassistance.api.dto.GetHelperCoordinates;
+import com.roadassistance.api.dto.GetProblemsByFilter;
 import com.roadassistance.api.dto.HelpRequest;
 import com.roadassistance.api.dto.Place;
 import com.roadassistance.api.dto.PushHelperLocation;
@@ -28,4 +29,5 @@ public interface IRoadAssistance {
 	boolean pushHelperLocation(PushHelperLocation pushHelperLocation);
 
 	GetHelperCoordinates getHelperCoordinates(long userId);
+	GetProblemsByFilter getProblems(double lat,double lng,double radius,int[] problemTypes);
 }

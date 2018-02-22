@@ -11,4 +11,5 @@ public interface IRoadAssistanceConstants {
 	String LEAVE_FEEDBACK = "/feedback";
 	String PUSH_HELPER_LOCATION = "/helper_location";
 	String GET_HELPER_COORDINATES = "/get_helper_coord";
+	String GET_PROBLEMS_BY_FILTER= "/problems";
 }
