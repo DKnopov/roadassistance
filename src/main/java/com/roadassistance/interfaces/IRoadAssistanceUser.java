@@ -11,9 +11,7 @@ import com.roadassistance.api.dto.PushHelperLocation;
 import com.roadassistance.api.dto.RespondToHelpRequest;
 import com.roadassistance.api.dto.ViewProfile;
 
-public interface IRoadAssistance {
-	Iterable<Place> getPlacesByFilter(int[] places);
-
+public interface IRoadAssistanceUser {
 	boolean createHelpRequest(HelpRequest helpRequest);
 
 	boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest);
@@ -29,5 +27,6 @@ public interface IRoadAssistance {
 	boolean pushHelperLocation(PushHelperLocation pushHelperLocation);
 
 	GetHelperCoordinates getHelperCoordinates(long userId);
-	GetProblemsByFilter getProblems(double lat,double lng,double radius,int[] problemTypes);
+	Iterable<GetProblemsByFilter> getProblems(double lat,double lng,double radius,int[] problemTypes);
+	Iterable<Place> getPlacesByFilter(int[] params);
 }
