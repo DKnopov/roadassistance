@@ -15,7 +15,7 @@ import com.roadassistance.interfaces.IRoadAssistanceUser;
 public class RoadAssistanceRepository implements IRoadAssistanceUser {
 
 	@Override
-	public Iterable<Place> getPlacesByFilter(int[] params) {
+	public Iterable<Place> getPlacesByFilter(int[] places) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -73,6 +73,5 @@ public class RoadAssistanceRepository implements IRoadAssistanceUser {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }
