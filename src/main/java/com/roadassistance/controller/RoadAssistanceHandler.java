@@ -1,6 +1,5 @@
 package com.roadassistance.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,78 +20,75 @@ import com.roadassistance.api.dto.PushHelperLocation;
 import com.roadassistance.api.dto.RespondToHelpRequest;
 import com.roadassistance.api.dto.ViewProfile;
 import com.roadassistance.interfaces.IRoadAssistanceConstants;
-import com.roadassistance.interfaces.IRoadAssistanceUser;
 
 @RestController
 public class RoadAssistanceHandler {
-	@Autowired
-	IRoadAssistanceUser roadAssistUser;
 
-	@PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
-	@CrossOrigin
-	public boolean respondHelpRequest(@RequestBody RespondToHelpRequest respondToHelpRequest) {
-		return roadAssistUser.respondToHelpRequest(respondToHelpRequest);
+    @PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
+    @CrossOrigin
+    public boolean respondHelpRequest(@RequestBody RespondToHelpRequest respondToHelpRequest) {
+        return false;
 
-	}
+    }
 
-	@GetMapping(IRoadAssistanceConstants.OBJECTS)
-	@CrossOrigin
-	Iterable<Place> getPlacesByFilter(@PathVariable int[] placeParams) {
+    @GetMapping(IRoadAssistanceConstants.OBJECTS)
+    @CrossOrigin
+    Iterable<Place> getPlacesByFilter(@PathVariable int[] placeParams) {
 
-		return  roadAssistUser.getPlacesByFilter(placeParams);
-	}
+        return null;
+    }
 
-	@PostMapping(IRoadAssistanceConstants.HELP_REQUEST)
-	@CrossOrigin
-	public boolean createHelpRequest(@RequestBody HelpRequest helpRequest) {
-		return roadAssistUser.createHelpRequest(helpRequest);
-	}
+    @PostMapping(IRoadAssistanceConstants.HELP_REQUEST)
+    @CrossOrigin
+    public boolean createHelpRequest(@RequestBody HelpRequest helpRequest) {
+        return false;
+    }
 
-	@PutMapping(IRoadAssistanceConstants.EDIT_PROFILE)
-	@CrossOrigin
-	public boolean editOwnProfile(@RequestBody EditOwnProfile editOwnProfile) {
-		return roadAssistUser.editOwnProfile(editOwnProfile);
-	}
+    @PutMapping(IRoadAssistanceConstants.EDIT_PROFILE)
+    @CrossOrigin
+    public boolean editOwnProfile(@RequestBody EditOwnProfile editOwnProfile) {
+        return false;
+    }
 
-	@PostMapping(IRoadAssistanceConstants.ACCEPT_HELP)
-	@CrossOrigin
-	public boolean acceptHelp(@RequestBody AcceptHelp acceptHelp) {
-		return roadAssistUser.acceptHelp(acceptHelp);
-	}
+    @PostMapping(IRoadAssistanceConstants.ACCEPT_HELP)
+    @CrossOrigin
+    public boolean acceptHelp(@RequestBody AcceptHelp acceptHelp) {
+        return false;
+    }
 
-	@GetMapping(IRoadAssistanceConstants.VIEW_PROFILE)
-	@CrossOrigin
-	public ViewProfile viewProfile(@RequestParam long userId) {
-		return roadAssistUser.viewProfile(userId);
-	}
+    @GetMapping(IRoadAssistanceConstants.VIEW_PROFILE)
+    @CrossOrigin
+    public ViewProfile viewProfile(@RequestParam long userId) {
+        return null;
+    }
 
-	@PostMapping(IRoadAssistanceConstants.LEAVE_FEEDBACK)
-	@CrossOrigin
-	public boolean leaveFeedBack(@RequestBody Feedback feedback) {
-		return roadAssistUser.leaveFeedback(feedback);
+    @PostMapping(IRoadAssistanceConstants.LEAVE_FEEDBACK)
+    @CrossOrigin
+    public boolean leaveFeedBack(@RequestBody Feedback feedback) {
+        return false;
 
-	}
+    }
 
-	@PostMapping(IRoadAssistanceConstants.PUSH_HELPER_LOCATION)
-	@CrossOrigin
-	public boolean pushHelperLocation(@RequestBody PushHelperLocation helperLoation) {
-		return roadAssistUser.pushHelperLocation(helperLoation);
+    @PostMapping(IRoadAssistanceConstants.PUSH_HELPER_LOCATION)
+    @CrossOrigin
+    public boolean pushHelperLocation(@RequestBody PushHelperLocation helperLoation) {
+        return false;
 
-	}
+    }
 
-	@GetMapping(IRoadAssistanceConstants.GET_HELPER_COORDINATES)
-	@CrossOrigin
-	public GetHelperCoordinates getHelperLocation(@RequestParam long userId) {
-		return roadAssistUser.getHelperCoordinates(userId);
-	}
+    @GetMapping(IRoadAssistanceConstants.GET_HELPER_COORDINATES)
+    @CrossOrigin
+    public GetHelperCoordinates getHelperLocation(@RequestParam long userId) {
+        return null;
+    }
 
-	@GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_BY_FILTER)
-	@CrossOrigin
-	public Iterable<GetProblemsByFilter> getProblemsByFilter(@RequestParam double lat, double lng, double radius,
-			int[] problemTypes) {
+    @GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_BY_FILTER)
+    @CrossOrigin
+    public Iterable<GetProblemsByFilter> getProblemsByFilter(@RequestParam double lat, double lng, double radius,
+                                                             boolean[] problemTypes) {
 
-		return roadAssistUser.getProblems(lat, lng, radius, problemTypes);
+        return null;
 
-	}
+    }
 
 }

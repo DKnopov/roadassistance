@@ -1,62 +1,63 @@
 package com.roadassistance.api.dto;
 
 public class Feedback {
-	long userId;
-	long reviewerId;
-	String comment;
-	int rating;
-	long problemId;
+    long userId;
+    long reviewerId;
+    String comment;
+    byte estimate;     // оценка пользователя
+    long problemId;
 
 
-	public Feedback(long userId, long reviewerId, String comment, int rating, long problemId) {
-		this.userId = userId;
-		this.reviewerId = reviewerId;
-		this.comment = comment;
-		this.rating = rating;
-		this.problemId = problemId;
-	}
+    public Feedback(long userId, long reviewerId, String comment, byte estimate, long problemId) {
+        this.userId = userId;
+        this.reviewerId = reviewerId;
+        this.comment = comment;
+        this.estimate = estimate;
+        this.problemId = problemId;
+    }
 
-	public Feedback() {
-	}
+    public Feedback() {
+    }
 
-	public long getUserId() {
-		return userId;
-	}
+    public byte getEstimate() {
+        return estimate;
+    }
 
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+    public void setEstimate(byte estimate) {
+        this.estimate = estimate;
+    }
 
-	public long getReviewerId() {
-		return reviewerId;
-	}
+    public long getUserId() {
+        return userId;
+    }
 
-	public void setReviewerId(long reviewerId) {
-		this.reviewerId = reviewerId;
-	}
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
-	public String getComment() {
-		return comment;
-	}
+    public long getReviewerId() {
+        return reviewerId;
+    }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+    public void setReviewerId(long reviewerId) {
+        this.reviewerId = reviewerId;
+    }
 
-	public int getRating() {
-		return rating;
-	}
+    public String getComment() {
+        return comment;
+    }
 
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	public long getProblemId() {
-		return problemId;
-	}
 
-	public void setProblemId(long problemId) {
-		this.problemId = problemId;
-	}
+    public long getProblemId() {
+        return problemId;
+    }
+
+    public void setProblemId(long problemId) {
+        this.problemId = problemId;
+    }
 
 }

@@ -5,17 +5,28 @@ public class ViewProfile {
 	String name;
 	String surname;
 	String phone;
+	double rating;
 	Feedback[] feedback;
 
-	public ViewProfile(long userId, String name, String surname, String phone, Feedback[] feedback) {
+	public ViewProfile(long userId, String name, String surname, String phone, double rating, Feedback[] feedback) {
 		this.userId = userId;
 		this.name = name;
 		this.surname = surname;
 		this.phone = phone;
+		this.rating = rating;
 		this.feedback = feedback;
 	}
 
 	public ViewProfile() {
+	}
+
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
 	}
 
 	public long getUserId() {

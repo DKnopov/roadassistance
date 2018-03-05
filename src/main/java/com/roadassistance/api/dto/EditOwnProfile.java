@@ -4,11 +4,34 @@ public class EditOwnProfile {
 	String name;
 	String surname;
 	String phone;
-	public EditOwnProfile(String name, String surname, String phone) {
+	String userPhoto;
+	UserVehicles[] userVehicles;
+
+	public String getUserPhoto() {
+		return userPhoto;
+	}
+
+	public void setUserPhoto(String userPhoto) {
+		this.userPhoto = userPhoto;
+	}
+
+	public UserVehicles[] getUserVehicles() {
+		return userVehicles;
+	}
+
+	public void setUserVehicles(UserVehicles[] userVehicles) {
+		this.userVehicles = userVehicles;
+	}
+
+	public EditOwnProfile(String name, String surname, String phone, String userPhoto, UserVehicles[] userVehicles) {
+
 		this.name = name;
 		this.surname = surname;
 		this.phone = phone;
+		this.userPhoto = userPhoto;
+		this.userVehicles = userVehicles;
 	}
+
 	public EditOwnProfile() {
 	}
 	public String getName() {
