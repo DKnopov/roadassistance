@@ -1,14 +1,14 @@
 package com.roadassistance.api.dto;
 
-public class UserVehicles {
+public class UserVehicle {
     String brand;
     String model;
     String transmission;
 
-    public UserVehicles() {
+    public UserVehicle() {
     }
 
-    public UserVehicles(String brand, String model, String transmission) {
+    public UserVehicle(String brand, String model, String transmission) {
         this.brand = brand;
         this.model = model;
         this.transmission = transmission;

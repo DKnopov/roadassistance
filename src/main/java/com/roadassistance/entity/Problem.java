@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 public class Problem implements Serializable {
 	@Id
 	long problemId;
-	int problemType;
+	String problemType;
 	String description;
 	double lat;
 	double lng;
@@ -18,9 +18,11 @@ public class Problem implements Serializable {
 	long acceptingUserId;
 	boolean isSolved;
 	LocalDate creationTime;
-	public Problem(long problemId, int problemType, String description, double lat, double lng, double direction,
+	
+	public Problem() {
+	}
+	public Problem(long problemId, String problemType, String description, double lat, double lng, double direction,
 			int status, int extra, long acceptingUserId, boolean isSolved, LocalDate creationTime) {
-		super();
 		this.problemId = problemId;
 		this.problemType = problemType;
 		this.description = description;
@@ -33,18 +35,17 @@ public class Problem implements Serializable {
 		this.isSolved = isSolved;
 		this.creationTime = creationTime;
 	}
-	public Problem() {
-	}
 	public long getProblemId() {
 		return problemId;
 	}
 	public void setProblemId(long problemId) {
 		this.problemId = problemId;
 	}
-	public int getProblemType() {
+	
+	public String getProblemType() {
 		return problemType;
 	}
-	public void setProblemType(int problemType) {
+	public void setProblemType(String problemType) {
 		this.problemType = problemType;
 	}
 	public String getDescription() {

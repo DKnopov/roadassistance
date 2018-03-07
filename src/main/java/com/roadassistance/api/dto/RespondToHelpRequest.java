@@ -1,13 +1,13 @@
 package com.roadassistance.api.dto;
 
 public class RespondToHelpRequest {
-	long promlemId;
+	long problemId;
 	long userId;
 	double lat;
 	double lng;
 	double direction;
-	public RespondToHelpRequest(long promlemId, long userId, double lat, double lng, double direction) {
-		this.promlemId = promlemId;
+	public RespondToHelpRequest(long problemId, long userId, double lat, double lng, double direction) {
+		this.problemId = problemId;
 		this.userId = userId;
 		this.lat = lat;
 		this.lng = lng;
@@ -15,11 +15,11 @@ public class RespondToHelpRequest {
 	}
 	public RespondToHelpRequest() {
 	}
-	public long getPromlemId() {
-		return promlemId;
+	public long getProblemId() {
+		return problemId;
 	}
-	public void setPromlemId(long promlemId) {
-		this.promlemId = promlemId;
+	public void setProblemId(long promlemId) {
+		this.problemId = promlemId;
 	}
 	public long getUserId() {
 		return userId;

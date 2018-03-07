@@ -1,5 +1,7 @@
 package com.roadassistance.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,15 +21,17 @@ import com.roadassistance.api.dto.Place;
 import com.roadassistance.api.dto.PushHelperLocation;
 import com.roadassistance.api.dto.RespondToHelpRequest;
 import com.roadassistance.api.dto.ViewProfile;
+import com.roadassistance.interfaces.IProblem;
 import com.roadassistance.interfaces.IRoadAssistanceConstants;
 
 @RestController
 public class RoadAssistanceHandler {
-
+@Autowired
+IProblem problemCrud;
     @PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
     @CrossOrigin
     public boolean respondHelpRequest(@RequestBody RespondToHelpRequest respondToHelpRequest) {
-        return false;
+        return problemCrud.respondToHelpRequest(respondToHelpRequest);
 
     }
 
@@ -41,7 +45,7 @@ public class RoadAssistanceHandler {
     @PostMapping(IRoadAssistanceConstants.HELP_REQUEST)
     @CrossOrigin
     public boolean createHelpRequest(@RequestBody HelpRequest helpRequest) {
-        return false;
+        return problemCrud.createHelprequest(helpRequest);
     }
 
     @PutMapping(IRoadAssistanceConstants.EDIT_PROFILE)

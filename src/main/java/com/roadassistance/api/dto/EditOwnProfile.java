@@ -5,7 +5,7 @@ public class EditOwnProfile {
 	String surname;
 	String phone;
 	String userPhoto;
-	UserVehicles[] userVehicles;
+	UserVehicle[] userVehicle;
 
 	public String getUserPhoto() {
 		return userPhoto;
@@ -15,21 +15,21 @@ public class EditOwnProfile {
 		this.userPhoto = userPhoto;
 	}
 
-	public UserVehicles[] getUserVehicles() {
-		return userVehicles;
+	public UserVehicle[] getUserVehicles() {
+		return userVehicle;
 	}
 
-	public void setUserVehicles(UserVehicles[] userVehicles) {
-		this.userVehicles = userVehicles;
+	public void setUserVehicles(UserVehicle[] userVehicles) {
+		this.userVehicle = userVehicles;
 	}
 
-	public EditOwnProfile(String name, String surname, String phone, String userPhoto, UserVehicles[] userVehicles) {
+	public EditOwnProfile(String name, String surname, String phone, String userPhoto, UserVehicle[] userVehicles) {
 
 		this.name = name;
 		this.surname = surname;
 		this.phone = phone;
 		this.userPhoto = userPhoto;
-		this.userVehicles = userVehicles;
+		this.userVehicle = userVehicles;
 	}
 
 	public EditOwnProfile() {
