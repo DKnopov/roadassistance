@@ -2,13 +2,12 @@ package com.roadassistance.api.dto;
 
 public class GetHelperCoordinates {
 	long userId;
-	double lat;
-	double lng;
+	Location geoLocation;
 	double direction;
+
 	public GetHelperCoordinates(long userId, double lat, double lng, double direction) {
 		this.userId = userId;
-		this.lat = lat;
-		this.lng = lng;
+		this.geoLocation = new Location(lng, lat);
 		this.direction = direction;
 	}
 	public GetHelperCoordinates() {
@@ -19,18 +18,15 @@ public class GetHelperCoordinates {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	public double getLat() {
-		return lat;
+
+	public Location getGeoLocation() {
+		return geoLocation;
 	}
-	public void setLat(double lat) {
-		this.lat = lat;
+
+	public void setGeoLocation(Location geoLocation) {
+		this.geoLocation = geoLocation;
 	}
-	public double getLng() {
-		return lng;
-	}
-	public void setLng(double lng) {
-		this.lng = lng;
-	}
+
 	public double getDirection() {
 		return direction;
 	}

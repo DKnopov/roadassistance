@@ -4,6 +4,9 @@ import com.roadassistance.api.dto.AcceptHelp;
 import com.roadassistance.api.dto.GetProblemsByFilter;
 import com.roadassistance.api.dto.HelpRequest;
 import com.roadassistance.api.dto.RespondToHelpRequest;
+import com.roadassistance.entity.Problem;
+
+import java.util.List;
 
 public interface IProblem {
 	boolean createHelprequest(HelpRequest helpRequest);
@@ -12,6 +15,6 @@ public interface IProblem {
 
 	boolean acceptHelp(AcceptHelp acceptHelp);
 
-	public Iterable<GetProblemsByFilter> getProblemsByFilter(double lat, double lng, double radius,
-			boolean[] problemTypes);
+	public Iterable<GetProblemsByFilter> getProblemsByFilter(double lng, double lat, double radius,
+												 boolean[] problemTypes);
 }

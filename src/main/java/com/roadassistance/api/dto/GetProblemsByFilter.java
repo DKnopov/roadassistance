@@ -1,25 +1,27 @@
 package com.roadassistance.api.dto;
 
+import org.bson.types.ObjectId;
+
 public class GetProblemsByFilter {
-    long problemId;
+
+    String problemId;
     long requestingUserId;
     int problemType;
     String description;
-    double lat;
-    double lng;
-    int status;
+    Location geoLocation;
     double direction;
+    int status;
     int extra;
 
-    public GetProblemsByFilter(long problemId, long requestingUserId, int problemType, String description, double lat, double lng, int status, double direction, int extra) {
+
+    public GetProblemsByFilter(String problemId, long requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra) {
         this.problemId = problemId;
         this.requestingUserId = requestingUserId;
         this.problemType = problemType;
         this.description = description;
-        this.lat = lat;
-        this.lng = lng;
-        this.status = status;
+        this.geoLocation = geoLocation;
         this.direction = direction;
+        this.status = status;
         this.extra = extra;
     }
 
@@ -27,11 +29,11 @@ public class GetProblemsByFilter {
 
     }
 
-    public long getProblemId() {
+    public String getProblemId() {
         return problemId;
     }
 
-    public void setProblemId(long problemId) {
+    public void setProblemId(String problemId) {
         this.problemId = problemId;
     }
 
@@ -67,20 +69,12 @@ public class GetProblemsByFilter {
         this.description = description;
     }
 
-    public double getLat() {
-        return lat;
+    public Location getGeoLocation() {
+        return geoLocation;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
-    }
-
-    public double getLng() {
-        return lng;
-    }
-
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setGeoLocation(Location geoLocation) {
+        this.geoLocation = geoLocation;
     }
 
     public int getStatus() {

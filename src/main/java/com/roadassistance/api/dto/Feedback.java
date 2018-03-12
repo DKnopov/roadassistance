@@ -5,10 +5,10 @@ public class Feedback {
     long reviewerId;
     String comment;
     byte estimate;     // оценка пользователя
-    long problemId;
+    String problemId;
 
 
-    public Feedback(long userId, long reviewerId, String comment, byte estimate, long problemId) {
+    public Feedback(long userId, long reviewerId, String comment, byte estimate, String problemId) {
         this.userId = userId;
         this.reviewerId = reviewerId;
         this.comment = comment;
@@ -51,13 +51,11 @@ public class Feedback {
         this.comment = comment;
     }
 
-
-    public long getProblemId() {
+    public String getProblemId() {
         return problemId;
     }
 
-    public void setProblemId(long problemId) {
+    public void setProblemId(String problemId) {
         this.problemId = problemId;
     }
-
 }
