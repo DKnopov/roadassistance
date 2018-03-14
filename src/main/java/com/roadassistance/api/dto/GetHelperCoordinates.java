@@ -1,32 +1,30 @@
 package com.roadassistance.api.dto;
 
 public class GetHelperCoordinates {
-	long userId;
+	String userPhone;
 	Location geoLocation;
 	double direction;
-
-	public GetHelperCoordinates(long userId, double lat, double lng, double direction) {
-		this.userId = userId;
-		this.geoLocation = new Location(lng, lat);
+	public GetHelperCoordinates(String userPhone, Location geoLocation, double direction) {
+		super();
+		this.userPhone = userPhone;
+		this.geoLocation = geoLocation;
 		this.direction = direction;
 	}
 	public GetHelperCoordinates() {
+	
 	}
-	public long getUserId() {
-		return userId;
+	public String getUserPhone() {
+		return userPhone;
 	}
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
-
 	public Location getGeoLocation() {
 		return geoLocation;
 	}
-
 	public void setGeoLocation(Location geoLocation) {
 		this.geoLocation = geoLocation;
 	}
-
 	public double getDirection() {
 		return direction;
 	}
@@ -34,6 +32,6 @@ public class GetHelperCoordinates {
 		this.direction = direction;
 	}
 	
-
+	
 
 }

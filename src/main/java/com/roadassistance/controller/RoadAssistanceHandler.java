@@ -1,8 +1,10 @@
 package com.roadassistance.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-import com.roadassistance.entity.Problem;
-import org.bson.types.ObjectId;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,14 +29,10 @@ import com.roadassistance.api.dto.ViewProfile;
 import com.roadassistance.interfaces.IProblem;
 import com.roadassistance.interfaces.IRoadAssistanceConstants;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 public class RoadAssistanceHandler {
-    @Autowired
-    IProblem problemCrud;
-
+@Autowired
+IProblem problemCrud;
     @PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
     @CrossOrigin
     public boolean respondHelpRequest(@RequestBody RespondToHelpRequest respondToHelpRequest) {
@@ -95,12 +93,11 @@ public class RoadAssistanceHandler {
 
     @GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_BY_FILTER)
     @CrossOrigin
-    public Iterable<GetProblemsByFilter> getProblemsByFilter(@RequestParam("lng") double lng,
-                                                             @RequestParam("lat") double lat,
-                                                             @RequestParam("radius") double radius,
-                                                             @RequestParam("problemTypes") boolean[] problemTypes) {
+    public Iterable<GetProblemsByFilter> getProblemsByFilter(@RequestParam double lat, double lng, double radius,
+                                                             boolean[] problemTypes) {
 
-        return problemCrud.getProblemsByFilter(lng, lat, radius, problemTypes);
+        return null;
+
     }
 
 }

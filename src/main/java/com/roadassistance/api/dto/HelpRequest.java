@@ -1,7 +1,7 @@
 package com.roadassistance.api.dto;
 
 public class HelpRequest {
-	long requestingUser;
+	String requestingUserPhone;
 	int problemType;
 	String description;
 	Location geoLocation;
@@ -12,8 +12,10 @@ public class HelpRequest {
 	public HelpRequest() {
 	}
 
-	public HelpRequest(long requestingUser, int problemType, String description, Location geoLocation, double direction, int status, int extra) {
-		this.requestingUser = requestingUser;
+	public HelpRequest(String requestingUserPhone, int problemType, String description, Location geoLocation,
+			double direction, int status, int extra) {
+		super();
+		this.requestingUserPhone = requestingUserPhone;
 		this.problemType = problemType;
 		this.description = description;
 		this.geoLocation = geoLocation;
@@ -22,12 +24,12 @@ public class HelpRequest {
 		this.extra = extra;
 	}
 
-	public long getRequestingUser() {
-		return requestingUser;
+	public String getRequestingUserPhone() {
+		return requestingUserPhone;
 	}
 
-	public void setRequestingUser(long requestingUser) {
-		this.requestingUser = requestingUser;
+	public void setRequestingUserPhone(String requestingUserPhone) {
+		this.requestingUserPhone = requestingUserPhone;
 	}
 
 	public int getProblemType() {
@@ -77,4 +79,6 @@ public class HelpRequest {
 	public void setExtra(int extra) {
 		this.extra = extra;
 	}
+
+
 }

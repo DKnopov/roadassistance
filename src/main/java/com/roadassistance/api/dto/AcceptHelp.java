@@ -1,26 +1,28 @@
 package com.roadassistance.api.dto;
 
 public class AcceptHelp {
-	long helperId;
+	String helperPhone;
 	String problemId;
-	public AcceptHelp(long helperId, String problemId) {
-		this.helperId = helperId;
+	public AcceptHelp(String helperPhone, String problemId) {
+		this.helperPhone = helperPhone;
 		this.problemId = problemId;
 	}
 	public AcceptHelp() {
+		
 	}
-	public long getHelperId() {
-		return helperId;
+	public String getHelperPhone() {
+		return helperPhone;
 	}
-	public void setHelperId(long helperId) {
-		this.helperId = helperId;
+	public void setHelperPhone(String helperPhone) {
+		this.helperPhone = helperPhone;
 	}
-
 	public String getProblemId() {
 		return problemId;
 	}
-
 	public void setProblemId(String problemId) {
 		this.problemId = problemId;
 	}
+
+	
+	
 }

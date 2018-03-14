@@ -21,10 +21,9 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 @Repository
 public class ProblemCrud implements IProblem {
     @Autowired
@@ -33,12 +32,12 @@ public class ProblemCrud implements IProblem {
     @Override
     public boolean createHelprequest(HelpRequest helpRequest) {
         //TODO userId&Saving logic&Java time
-        LocalDateTime now = LocalDateTime.of(LocalDate.now(), LocalTime.now());
-        Problem problem = new Problem(ObjectId.get().toString(), helpRequest.getRequestingUser(), helpRequest.getProblemType(),
+        LocalDateTime now = LocalDateTime.of(LocalDate.now(ZoneId.of("Israel")), LocalTime.now(ZoneId.of("Israel")));
+        Problem problem = new Problem(ObjectId.get().toString(), helpRequest.getRequestingUserPhone(), helpRequest.getProblemType(),
                 helpRequest.getDescription(),
                 helpRequest.getGeoLocation(), helpRequest.getDirection(),
                 helpRequest.getStatus(), helpRequest.getExtra(),
-                0, false,
+                null, false,
                 now);
         mongoOperations.save(problem);
         return true;
@@ -51,7 +50,7 @@ public class ProblemCrud implements IProblem {
             return false;
         }
         //TODO problemSolverCoordiantes?
-        problem.setAcceptingUserId(respondToHelpRequest.getUserId());
+        problem.setAcceptingUserPhone(respondToHelpRequest.getUserPhone());
         problem.setStatus(0);///TODO Handle status with frontEnd
         mongoOperations.save(problem);
         return true;
@@ -75,7 +74,7 @@ public class ProblemCrud implements IProblem {
         List<GetProblemsByFilter> problemsByFilters = new ArrayList<>();
         for (Problem p : problems) {
             GetProblemsByFilter getProblemsByFilter = new GetProblemsByFilter(p.getProblemId(),
-                    p.getRequestingUserId(), p.getProblemType(),
+                    p.getRequestingUserPhone(), p.getProblemType(),
                     p.getDescription(), p.getGeoLocation(),
                     p.getDirection(), p.getStatus(), p.getExtra());
             for (int i = 0; i < problemTypes.length; i++) {

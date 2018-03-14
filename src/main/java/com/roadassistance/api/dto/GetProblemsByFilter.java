@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 public class GetProblemsByFilter {
 
     String problemId;
-    long requestingUserId;
+    String requestingUserPhone;
     int problemType;
     String description;
     Location geoLocation;
@@ -14,9 +14,9 @@ public class GetProblemsByFilter {
     int extra;
 
 
-    public GetProblemsByFilter(String problemId, long requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra) {
+    public GetProblemsByFilter(String problemId, String requestingUserPhone, int problemType, String description, Location geoLocation, double direction, int status, int extra) {
         this.problemId = problemId;
-        this.requestingUserId = requestingUserId;
+        this.requestingUserPhone = requestingUserPhone;
         this.problemType = problemType;
         this.description = description;
         this.geoLocation = geoLocation;
@@ -37,12 +37,12 @@ public class GetProblemsByFilter {
         this.problemId = problemId;
     }
 
-    public long getRequestingUserId() {
-        return requestingUserId;
+    public String getRequestingUserId() {
+        return requestingUserPhone;
     }
 
-    public void setRequestingUserId(long requestingUserId) {
-        this.requestingUserId = requestingUserId;
+    public void setRequestingUserId(String requestingUserPhone) {
+        this.requestingUserPhone = requestingUserPhone;
     }
 
     public int getExtra() {
