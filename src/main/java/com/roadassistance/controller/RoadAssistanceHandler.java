@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 
+import com.roadassistance.api.dto.*;
+import com.roadassistance.interfaces.IUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,23 +18,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.roadassistance.api.dto.AcceptHelp;
-import com.roadassistance.api.dto.EditOwnProfile;
-import com.roadassistance.api.dto.Feedback;
-import com.roadassistance.api.dto.GetHelperCoordinates;
-import com.roadassistance.api.dto.GetProblemsByFilter;
-import com.roadassistance.api.dto.HelpRequest;
-import com.roadassistance.api.dto.Place;
-import com.roadassistance.api.dto.PushHelperLocation;
-import com.roadassistance.api.dto.RespondToHelpRequest;
-import com.roadassistance.api.dto.ViewProfile;
 import com.roadassistance.interfaces.IProblem;
 import com.roadassistance.interfaces.IRoadAssistanceConstants;
 
 @RestController
 public class RoadAssistanceHandler {
-@Autowired
-IProblem problemCrud;
+    @Autowired
+    IProblem problemCrud;
+    @Autowired
+    IUser userCrud;
+
     @PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
     @CrossOrigin
     public boolean respondHelpRequest(@RequestBody RespondToHelpRequest respondToHelpRequest) {
@@ -56,7 +51,7 @@ IProblem problemCrud;
     @PutMapping(IRoadAssistanceConstants.EDIT_PROFILE)
     @CrossOrigin
     public boolean editOwnProfile(@RequestBody EditOwnProfile editOwnProfile) {
-        return false;
+        return userCrud.editOwnProfile(editOwnProfile);
     }
 
     @PostMapping(IRoadAssistanceConstants.ACCEPT_HELP)
@@ -67,15 +62,14 @@ IProblem problemCrud;
 
     @GetMapping(IRoadAssistanceConstants.VIEW_PROFILE)
     @CrossOrigin
-    public ViewProfile viewProfile(@RequestParam long userId) {
-        return null;
+    public ViewProfile viewProfile(@RequestParam String userPhone) {
+        return userCrud.viewProfile(userPhone);
     }
 
     @PostMapping(IRoadAssistanceConstants.LEAVE_FEEDBACK)
     @CrossOrigin
     public boolean leaveFeedBack(@RequestBody Feedback feedback) {
-        return false;
-
+        return userCrud.leaveFeedback(feedback);
     }
 
     @PostMapping(IRoadAssistanceConstants.PUSH_HELPER_LOCATION)
@@ -93,11 +87,18 @@ IProblem problemCrud;
 
     @GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_BY_FILTER)
     @CrossOrigin
-    public Iterable<GetProblemsByFilter> getProblemsByFilter(@RequestParam double lat, double lng, double radius,
+    public Iterable<GetProblemsByFilter> getProblemsByFilter(@RequestParam double lng, double lat, double radius,
                                                              boolean[] problemTypes) {
 
-        return null;
+        return problemCrud.getProblemsByFilter(lng, lat, radius, problemTypes);
 
     }
+
+    @PostMapping(IRoadAssistanceConstants.REGISTRATION)
+    @CrossOrigin
+    public boolean registration(@RequestBody String userPhone) {
+        return userCrud.registration(userPhone);
+    }
+
 
 }

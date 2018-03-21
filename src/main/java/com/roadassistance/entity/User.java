@@ -20,15 +20,14 @@ public class User implements Serializable{
     UserVehicle[] userVehicles;
     String userPhoto;
     double rating;
+    int countEstimates;
 
     public User() {
     }
 
 
-
     public User(String phone, String name, String surname, Feedback[] feedbacks, Location geoLocation, double direction,
 			UserVehicle[] userVehicles, String userPhoto, double rating) {
-		super();
 		this.phone = phone;
 		this.name = name;
 		this.surname = surname;
@@ -40,13 +39,21 @@ public class User implements Serializable{
 		this.rating = rating;
 	}
 
-
+	public User(String phone) {
+		this.phone = phone;
+	}
 
 	public String getPhone() {
 		return phone;
 	}
 
+	public int getCountEstimates() {
+		return countEstimates;
+	}
 
+	public void setCountEstimates(int countEstimates) {
+		this.countEstimates = countEstimates;
+	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;

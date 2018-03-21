@@ -5,6 +5,7 @@ import com.roadassistance.api.dto.GetProblemsByFilter;
 import com.roadassistance.api.dto.HelpRequest;
 import com.roadassistance.api.dto.RespondToHelpRequest;
 import com.roadassistance.entity.Problem;
+import com.roadassistance.entity.User;
 import com.roadassistance.interfaces.IProblem;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
 public class ProblemCrud implements IProblem {
     @Autowired
@@ -37,26 +39,40 @@ public class ProblemCrud implements IProblem {
                 helpRequest.getDescription(),
                 helpRequest.getGeoLocation(), helpRequest.getDirection(),
                 helpRequest.getStatus(), helpRequest.getExtra(),
-                null, false,
+                "", false,
                 now);
         mongoOperations.save(problem);
+
+        Query query = new Query(Criteria.where("_id").is(problem.getRequestingUserPhone()));
+        Update update = new Update();
+        update.set("geoLocation", problem.getGeoLocation());
+        mongoOperations.upsert(query, update, User.class);
+
         return true;
     }
 
     @Override
     public boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest) {
-        Problem problem = mongoOperations.findById(respondToHelpRequest.getProblemId(), Problem.class);
+ /*       Problem problem = mongoOperations.findById(respondToHelpRequest.getProblemId(), Problem.class);
         if (problem == null) {
             return false;
         }
         //TODO problemSolverCoordiantes?
         problem.setAcceptingUserPhone(respondToHelpRequest.getUserPhone());
-        problem.setStatus(0);///TODO Handle status with frontEnd
-        mongoOperations.save(problem);
+        problem.setStatus(0);
+        mongoOperations.save(problem);*/
+
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(respondToHelpRequest.getProblemId()));
+        Update update = new Update();
+        update.set("acceptingUserPhone", respondToHelpRequest.getUserPhone());
+        update.set("status", 0);
+        mongoOperations.upsert(query, update, Problem.class);
         return true;
     }
 
     @Override
+    @Deprecated
     public boolean acceptHelp(AcceptHelp acceptHelp) {
         // TODO Auto-generated method stub
         return false;
@@ -84,7 +100,6 @@ public class ProblemCrud implements IProblem {
                     }
                 }
             }
-            //problemsByFilters.add(getProblemsByFilter);
             //TODO problemtypes
         }
         return problemsByFilters;

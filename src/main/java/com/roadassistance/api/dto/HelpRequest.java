@@ -14,7 +14,6 @@ public class HelpRequest {
 
 	public HelpRequest(String requestingUserPhone, int problemType, String description, Location geoLocation,
 			double direction, int status, int extra) {
-		super();
 		this.requestingUserPhone = requestingUserPhone;
 		this.problemType = problemType;
 		this.description = description;

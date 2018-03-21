@@ -1,33 +1,40 @@
 package com.roadassistance.api.dto;
 
 public class Feedback {
-    String userId;
-    String reviewerId;
+    String userPhone;
+    String reviewerPhone;
     String comment;
     int estimate;     // оценка пользователя
     String problemId;
-	public Feedback(String userId, String reviewerId, String comment, int estimate, String problemId) {
-		this.userId = userId;
-		this.reviewerId = reviewerId;
+
+	public Feedback() {
+	
+	}
+
+	public Feedback(String userPhone, String reviewerPhone, String comment, int estimate, String problemId) {
+		this.userPhone = userPhone;
+		this.reviewerPhone = reviewerPhone;
 		this.comment = comment;
 		this.estimate = estimate;
 		this.problemId = problemId;
 	}
-	public Feedback() {
-	
+
+	public String getUserPhone() {
+		return userPhone;
 	}
-	public String getUserId() {
-		return userId;
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+
+	public String getReviewerPhone() {
+		return reviewerPhone;
 	}
-	public String getReviewerId() {
-		return reviewerId;
+
+	public void setReviewerPhone(String reviewerPhone) {
+		this.reviewerPhone = reviewerPhone;
 	}
-	public void setReviewerId(String reviewerId) {
-		this.reviewerId = reviewerId;
-	}
+
 	public String getComment() {
 		return comment;
 	}

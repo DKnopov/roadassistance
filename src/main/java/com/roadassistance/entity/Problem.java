@@ -28,9 +28,7 @@ public class Problem implements Serializable {
     public Problem() {
     }
 
-	public Problem(String problemId, String requestingUserPhone, int problemType, String description,
-			Location geoLocation, double direction, int status, int extra, String acceptingUserPhone, boolean isSolved,
-			LocalDateTime creationTime) {
+	public Problem(String problemId, String requestingUserPhone, int problemType, String description, Location geoLocation, double direction, int status, int extra, String acceptingUserPhone, boolean isSolved, LocalDateTime creationTime) {
 		this.problemId = problemId;
 		this.requestingUserPhone = requestingUserPhone;
 		this.problemType = problemType;

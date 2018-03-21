@@ -1,17 +1,16 @@
 package com.roadassistance.interfaces;
 
-import com.roadassistance.api.dto.EditOwnProfile;
-import com.roadassistance.api.dto.Feedback;
-import com.roadassistance.api.dto.GetHelperCoordinates;
-import com.roadassistance.api.dto.ViewProfile;
+import com.roadassistance.api.dto.*;
 
 public interface IUser {
-    boolean EditOwnProfile(EditOwnProfile editOwnProfile);
+    boolean registration(String userPhone);
 
-    ViewProfile viewProfile(long userId);
+    boolean editOwnProfile(EditOwnProfile editOwnProfile);
 
-    boolean LeaveFeedback(Feedback feedback);
+    ViewProfile viewProfile(String userPhone);
 
-    GetHelperCoordinates getHelperCoordinates(long userId);
+    boolean leaveFeedback(Feedback feedback);
+
+    GetHelperCoordinates getHelperCoordinates(String userPhone);
 }
 

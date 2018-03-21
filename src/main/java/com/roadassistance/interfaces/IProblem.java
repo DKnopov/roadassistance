@@ -15,6 +15,6 @@ public interface IProblem {
 
 	boolean acceptHelp(AcceptHelp acceptHelp);
 
-	public Iterable<GetProblemsByFilter> getProblemsByFilter(double lng, double lat, double radius,
+	Iterable<GetProblemsByFilter> getProblemsByFilter(double lng, double lat, double radius,
 												 boolean[] problemTypes);
 }
