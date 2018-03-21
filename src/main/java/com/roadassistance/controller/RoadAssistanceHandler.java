@@ -4,9 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.concurrent.ExecutionException;
 
 import com.roadassistance.api.dto.*;
 import com.roadassistance.interfaces.IUser;
+import com.roadassistance.model.FBMessenger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +29,8 @@ public class RoadAssistanceHandler {
     IProblem problemCrud;
     @Autowired
     IUser userCrud;
+    @Autowired
+    FBMessenger messenger;
 
     @PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
     @CrossOrigin
@@ -44,7 +48,8 @@ public class RoadAssistanceHandler {
 
     @PostMapping(IRoadAssistanceConstants.HELP_REQUEST)
     @CrossOrigin
-    public boolean createHelpRequest(@RequestBody HelpRequest helpRequest) {
+    public boolean createHelpRequest(@RequestBody HelpRequest helpRequest) throws ExecutionException, InterruptedException {
+        messenger.sendMessage("TEST");
         return problemCrud.createHelprequest(helpRequest);
     }
 

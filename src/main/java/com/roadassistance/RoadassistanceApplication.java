@@ -16,14 +16,7 @@ public class RoadassistanceApplication {
 
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(RoadassistanceApplication.class, args);
-		FileInputStream serviceAccount = new FileInputStream("C:\\Users\\1\\IdeaProjects\\roadassistance\\roadassistanceserver-firebase-adminsdk-bnkfl-17c901f785.json");
 
-		FirebaseOptions options = new FirebaseOptions.Builder()
-				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-				.setDatabaseUrl("https://roadassistanceserver.firebaseio.com")
-				.build();
-
-		FirebaseApp.initializeApp(options);
 
 	}
 }
