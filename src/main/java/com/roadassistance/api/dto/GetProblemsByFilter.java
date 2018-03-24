@@ -1,11 +1,9 @@
 package com.roadassistance.api.dto;
 
-import org.bson.types.ObjectId;
-
 public class GetProblemsByFilter {
 
     String problemId;
-    String requestingUserPhone;
+    String requestingUserId;
     int problemType;
     String description;
     Location geoLocation;
@@ -14,9 +12,9 @@ public class GetProblemsByFilter {
     int extra;
 
 
-    public GetProblemsByFilter(String problemId, String requestingUserPhone, int problemType, String description, Location geoLocation, double direction, int status, int extra) {
+    public GetProblemsByFilter(String problemId, String requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra) {
         this.problemId = problemId;
-        this.requestingUserPhone = requestingUserPhone;
+        this.requestingUserId = requestingUserId;
         this.problemType = problemType;
         this.description = description;
         this.geoLocation = geoLocation;
@@ -38,11 +36,11 @@ public class GetProblemsByFilter {
     }
 
     public String getRequestingUserId() {
-        return requestingUserPhone;
+        return requestingUserId;
     }
 
-    public void setRequestingUserId(String requestingUserPhone) {
-        this.requestingUserPhone = requestingUserPhone;
+    public void setRequestingUserId(String requestingUserId) {
+        this.requestingUserId = requestingUserId;
     }
 
     public int getExtra() {

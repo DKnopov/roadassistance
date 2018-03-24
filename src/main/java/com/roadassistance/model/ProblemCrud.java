@@ -1,5 +1,6 @@
 package com.roadassistance.model;
 
+import com.google.firebase.messaging.*;
 import com.roadassistance.api.dto.AcceptHelp;
 import com.roadassistance.api.dto.GetProblemsByFilter;
 import com.roadassistance.api.dto.HelpRequest;
@@ -25,6 +26,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Repository
 public class ProblemCrud implements IProblem {
@@ -33,17 +35,17 @@ public class ProblemCrud implements IProblem {
 
     @Override
     public boolean createHelprequest(HelpRequest helpRequest) {
-        //TODO userId&Saving logic&Java time
+
         LocalDateTime now = LocalDateTime.of(LocalDate.now(ZoneId.of("Israel")), LocalTime.now(ZoneId.of("Israel")));
-        Problem problem = new Problem(ObjectId.get().toString(), helpRequest.getRequestingUserPhone(), helpRequest.getProblemType(),
+        Problem problem = new Problem(ObjectId.get().toString(), helpRequest.getRequestingUserId(), helpRequest.getProblemType(),
                 helpRequest.getDescription(),
                 helpRequest.getGeoLocation(), helpRequest.getDirection(),
                 helpRequest.getStatus(), helpRequest.getExtra(),
                 "", false,
-                now);
+                now, helpRequest.getFbToken());
         mongoOperations.save(problem);
 
-        Query query = new Query(Criteria.where("_id").is(problem.getRequestingUserPhone()));
+        Query query = new Query(Criteria.where("_id").is(problem.getRequestingUserId()));
         Update update = new Update();
         update.set("geoLocation", problem.getGeoLocation());
         mongoOperations.upsert(query, update, User.class);
@@ -52,22 +54,41 @@ public class ProblemCrud implements IProblem {
     }
 
     @Override
-    public boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest) {
- /*       Problem problem = mongoOperations.findById(respondToHelpRequest.getProblemId(), Problem.class);
-        if (problem == null) {
-            return false;
-        }
-        //TODO problemSolverCoordiantes?
-        problem.setAcceptingUserPhone(respondToHelpRequest.getUserPhone());
+    public boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest) throws ExecutionException, InterruptedException {
+        Problem problem = mongoOperations.findById(respondToHelpRequest.getProblemId(), Problem.class);
+        problem.setAcceptingUserId(respondToHelpRequest.getUserId());
         problem.setStatus(0);
-        mongoOperations.save(problem);*/
+        mongoOperations.save(problem);
+        User user = mongoOperations.findById(respondToHelpRequest.getUserId(), User.class);
+        Message message = Message.builder()
+                .setAndroidConfig(AndroidConfig.builder()
+                        .setTtl(300 * 1000)
+                        .setPriority(AndroidConfig.Priority.HIGH)
+                        .setNotification(AndroidNotification.builder()
+                                .setTitle("Helper info")
+                                .setBody("")
+                                .setIcon(user.getUserPhoto())
+                                .build())
+                        .build())
+                .setWebpushConfig(WebpushConfig.builder()
+                        .setNotification(new WebpushNotification(
+                                "Helper info",
+                                "",
+                                user.getUserPhoto()))
+                        .build())
+                .setToken(problem.getFbToken())
+                .build();
 
-        Query query = new Query();
+        FirebaseMessaging.getInstance().sendAsync(message).get();
+
+
+      /*  Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(respondToHelpRequest.getProblemId()));
         Update update = new Update();
-        update.set("acceptingUserPhone", respondToHelpRequest.getUserPhone());
+        update.set("acceptingUserId", respondToHelpRequest.getUserId());
         update.set("status", 0);
-        mongoOperations.upsert(query, update, Problem.class);
+        mongoOperations.upsert(query, update, Problem.class);*/
+
         return true;
     }
 
@@ -90,7 +111,7 @@ public class ProblemCrud implements IProblem {
         List<GetProblemsByFilter> problemsByFilters = new ArrayList<>();
         for (Problem p : problems) {
             GetProblemsByFilter getProblemsByFilter = new GetProblemsByFilter(p.getProblemId(),
-                    p.getRequestingUserPhone(), p.getProblemType(),
+                    p.getRequestingUserId(), p.getProblemType(),
                     p.getDescription(), p.getGeoLocation(),
                     p.getDirection(), p.getStatus(), p.getExtra());
             for (int i = 0; i < problemTypes.length; i++) {

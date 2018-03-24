@@ -1,8 +1,9 @@
 package com.roadassistance.api.dto;
 
 public class Feedback {
-    String userPhone;
-    String reviewerPhone;
+	String userId;
+    String userName;
+    String reviewerName;
     String comment;
     int estimate;     // оценка пользователя
     String problemId;
@@ -11,28 +12,37 @@ public class Feedback {
 	
 	}
 
-	public Feedback(String userPhone, String reviewerPhone, String comment, int estimate, String problemId) {
-		this.userPhone = userPhone;
-		this.reviewerPhone = reviewerPhone;
+	public Feedback(String userName, String reviewerName, String comment, int estimate, String problemId) {
+		this.userName = userName;
+		this.reviewerName = reviewerName;
 		this.comment = comment;
 		this.estimate = estimate;
 		this.problemId = problemId;
 	}
 
-	public String getUserPhone() {
-		return userPhone;
+	public Feedback(String userId, String userName, String reviewerName, String comment, int estimate, String problemId) {
+		this.userId = userId;
+		this.userName = userName;
+		this.reviewerName = reviewerName;
+		this.comment = comment;
+		this.estimate = estimate;
+		this.problemId = problemId;
 	}
 
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
+	public String getUserName() {
+		return userName;
 	}
 
-	public String getReviewerPhone() {
-		return reviewerPhone;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public void setReviewerPhone(String reviewerPhone) {
-		this.reviewerPhone = reviewerPhone;
+	public String getReviewerName() {
+		return reviewerName;
+	}
+
+	public void setReviewerName(String reviewerName) {
+		this.reviewerName = reviewerName;
 	}
 
 	public String getComment() {
@@ -53,8 +63,13 @@ public class Feedback {
 	public void setProblemId(String problemId) {
 		this.problemId = problemId;
 	}
-	
 
 
-   
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }

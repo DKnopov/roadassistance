@@ -1,24 +1,39 @@
 package com.roadassistance.api.dto;
 
 public class EditOwnProfile {
+	String userId;
+	String email;
 	String phone;
 	String name;
 	String surname;
 	String userPhoto;
 	UserVehicle[] userVehicles;
-	public EditOwnProfile(String phone, String name, String surname, String userPhoto, UserVehicle[] userVehicles) {
+
+	public EditOwnProfile(String userId, String email, String phone, String name, String surname, String userPhoto, UserVehicle[] userVehicles) {
+		this.userId = userId;
+		this.email = email;
 		this.phone = phone;
 		this.name = name;
 		this.surname = surname;
 		this.userPhoto = userPhoto;
 		this.userVehicles = userVehicles;
 	}
+
 	public EditOwnProfile() {
 	
 	}
 	public String getPhone() {
 		return phone;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
@@ -46,9 +61,12 @@ public class EditOwnProfile {
 	public void setUserVehicles(UserVehicle[] userVehicles) {
 		this.userVehicles = userVehicles;
 	}
-	
-	
 
-	
-	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }

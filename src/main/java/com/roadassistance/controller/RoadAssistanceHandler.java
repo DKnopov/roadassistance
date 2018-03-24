@@ -1,16 +1,10 @@
 package com.roadassistance.controller;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.concurrent.ExecutionException;
 
 import com.roadassistance.api.dto.*;
 import com.roadassistance.interfaces.IUser;
-import com.roadassistance.model.FBMessenger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,12 +23,10 @@ public class RoadAssistanceHandler {
     IProblem problemCrud;
     @Autowired
     IUser userCrud;
-    @Autowired
-    FBMessenger messenger;
 
     @PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
     @CrossOrigin
-    public boolean respondHelpRequest(@RequestBody RespondToHelpRequest respondToHelpRequest) {
+    public boolean respondHelpRequest(@RequestBody RespondToHelpRequest respondToHelpRequest) throws ExecutionException, InterruptedException {
         return problemCrud.respondToHelpRequest(respondToHelpRequest);
 
     }
@@ -49,7 +41,6 @@ public class RoadAssistanceHandler {
     @PostMapping(IRoadAssistanceConstants.HELP_REQUEST)
     @CrossOrigin
     public boolean createHelpRequest(@RequestBody HelpRequest helpRequest) throws ExecutionException, InterruptedException {
-        messenger.sendMessage("TEST");
         return problemCrud.createHelprequest(helpRequest);
     }
 
@@ -101,9 +92,12 @@ public class RoadAssistanceHandler {
 
     @PostMapping(IRoadAssistanceConstants.REGISTRATION)
     @CrossOrigin
-    public boolean registration(@RequestBody String userPhone) {
-        return userCrud.registration(userPhone);
+    public boolean registration(@RequestBody Registration registration) {
+        return userCrud.registration(registration);
     }
+
+
+
 
 
 }

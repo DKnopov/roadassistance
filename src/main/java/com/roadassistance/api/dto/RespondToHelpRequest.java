@@ -2,16 +2,17 @@ package com.roadassistance.api.dto;
 
 public class RespondToHelpRequest {
 	String problemId;
-	String userPhone;
+	String userId;
 	Location geoLocation;
 	double direction;
-	public RespondToHelpRequest(String problemId, String userPhone, Location geoLocation, double direction) {
-		super();
+
+	public RespondToHelpRequest(String problemId, String userId, Location geoLocation, double direction) {
 		this.problemId = problemId;
-		this.userPhone = userPhone;
+		this.userId = userId;
 		this.geoLocation = geoLocation;
 		this.direction = direction;
 	}
+
 	public RespondToHelpRequest() {
 		
 	}
@@ -21,12 +22,15 @@ public class RespondToHelpRequest {
 	public void setProblemId(String problemId) {
 		this.problemId = problemId;
 	}
-	public String getUserPhone() {
-		return userPhone;
+
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
+
 	public Location getGeoLocation() {
 		return geoLocation;
 	}

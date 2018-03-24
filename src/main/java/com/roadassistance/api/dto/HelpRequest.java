@@ -1,34 +1,43 @@
 package com.roadassistance.api.dto;
 
 public class HelpRequest {
-	String requestingUserPhone;
+	String requestingUserId;
 	int problemType;
 	String description;
 	Location geoLocation;
 	double direction;
 	int status;
 	int extra;
+	String fbToken;
 
 	public HelpRequest() {
 	}
 
-	public HelpRequest(String requestingUserPhone, int problemType, String description, Location geoLocation,
-			double direction, int status, int extra) {
-		this.requestingUserPhone = requestingUserPhone;
+	public HelpRequest(String requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra, String fbToken) {
+		this.requestingUserId = requestingUserId;
 		this.problemType = problemType;
 		this.description = description;
 		this.geoLocation = geoLocation;
 		this.direction = direction;
 		this.status = status;
 		this.extra = extra;
+		this.fbToken = fbToken;
 	}
 
-	public String getRequestingUserPhone() {
-		return requestingUserPhone;
+	public String getFbToken() {
+		return fbToken;
 	}
 
-	public void setRequestingUserPhone(String requestingUserPhone) {
-		this.requestingUserPhone = requestingUserPhone;
+	public void setFbToken(String fbToken) {
+		this.fbToken = fbToken;
+	}
+
+	public String getRequestingUserId() {
+		return requestingUserId;
+	}
+
+	public void setRequestingUserId(String requestingUserId) {
+		this.requestingUserId = requestingUserId;
 	}
 
 	public int getProblemType() {

@@ -9,14 +9,16 @@ public class ViewProfile {
 	public ViewProfile() {
 
 	}
+
 	public ViewProfile(String phone, String name, String surname, double rating, Feedback[] feedback) {
-		super();
 		this.phone = phone;
 		this.name = name;
 		this.surname = surname;
 		this.rating = rating;
 		this.feedback = feedback;
 	}
+
+
 	public String getPhone() {
 		return phone;
 	}

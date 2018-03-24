@@ -9,8 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 
 @Document(collection = "user")
-public class User implements Serializable{
+public class User implements Serializable {
     @Id
+    String userId;
+    String email;
     String phone;
     String name;
     String surname;
@@ -21,138 +23,151 @@ public class User implements Serializable{
     String userPhoto;
     double rating;
     int countEstimates;
+    String password;
+
 
     public User() {
     }
 
+    public User(String userId, String email, String phone, String name, String surname, Feedback[] feedbacks, Location geoLocation, double direction, UserVehicle[] userVehicles, String userPhoto, double rating, int countEstimates, String password) {
+        this.userId = userId;
+        this.email = email;
+        this.phone = phone;
+        this.name = name;
+        this.surname = surname;
+        this.feedbacks = feedbacks;
+        this.geoLocation = geoLocation;
+        this.direction = direction;
+        this.userVehicles = userVehicles;
+        this.userPhoto = userPhoto;
+        this.rating = rating;
+        this.countEstimates = countEstimates;
+        this.password = password;
+    }
 
-    public User(String phone, String name, String surname, Feedback[] feedbacks, Location geoLocation, double direction,
-			UserVehicle[] userVehicles, String userPhoto, double rating) {
-		this.phone = phone;
-		this.name = name;
-		this.surname = surname;
-		this.feedbacks = feedbacks;
-		this.geoLocation = geoLocation;
-		this.direction = direction;
-		this.userVehicles = userVehicles;
-		this.userPhoto = userPhoto;
-		this.rating = rating;
-	}
+    public User(String userId, String email, String password) {
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+    }
 
-	public User(String phone) {
-		this.phone = phone;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public int getCountEstimates() {
-		return countEstimates;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setCountEstimates(int countEstimates) {
-		this.countEstimates = countEstimates;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
+    public int getCountEstimates() {
+        return countEstimates;
+    }
 
+    public void setCountEstimates(int countEstimates) {
+        this.countEstimates = countEstimates;
+    }
 
-	public String getName() {
-		return name;
-	}
-
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-
-	public String getSurname() {
-		return surname;
-	}
-
-
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
 
-
-	public Feedback[] getFeedbacks() {
-		return feedbacks;
-	}
-
+    public String getName() {
+        return name;
+    }
 
 
-	public void setFeedbacks(Feedback[] feedbacks) {
-		this.feedbacks = feedbacks;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
 
-
-	public Location getGeoLocation() {
-		return geoLocation;
-	}
-
+    public String getSurname() {
+        return surname;
+    }
 
 
-	public void setGeoLocation(Location geoLocation) {
-		this.geoLocation = geoLocation;
-	}
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
 
-
-	public double getDirection() {
-		return direction;
-	}
-
+    public Feedback[] getFeedbacks() {
+        return feedbacks;
+    }
 
 
-	public void setDirection(double direction) {
-		this.direction = direction;
-	}
+    public void setFeedbacks(Feedback[] feedbacks) {
+        this.feedbacks = feedbacks;
+    }
 
 
-
-	public UserVehicle[] getUserVehicles() {
-		return userVehicles;
-	}
-
+    public Location getGeoLocation() {
+        return geoLocation;
+    }
 
 
-	public void setUserVehicles(UserVehicle[] userVehicles) {
-		this.userVehicles = userVehicles;
-	}
+    public void setGeoLocation(Location geoLocation) {
+        this.geoLocation = geoLocation;
+    }
 
 
-
-	public String getUserPhoto() {
-		return userPhoto;
-	}
-
+    public double getDirection() {
+        return direction;
+    }
 
 
-	public void setUserPhoto(String userPhoto) {
-		this.userPhoto = userPhoto;
-	}
+    public void setDirection(double direction) {
+        this.direction = direction;
+    }
 
 
-
-	public double getRating() {
-		return rating;
-	}
-
+    public UserVehicle[] getUserVehicles() {
+        return userVehicles;
+    }
 
 
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
-    
+    public void setUserVehicles(UserVehicle[] userVehicles) {
+        this.userVehicles = userVehicles;
+    }
+
+
+    public String getUserPhoto() {
+        return userPhoto;
+    }
+
+
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
+    }
+
+
+    public double getRating() {
+        return rating;
+    }
+
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }
