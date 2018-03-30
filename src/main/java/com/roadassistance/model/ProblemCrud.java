@@ -37,10 +37,14 @@ public class ProblemCrud implements IProblem {
     public boolean createHelprequest(HelpRequest helpRequest) {
 
         LocalDateTime now = LocalDateTime.of(LocalDate.now(ZoneId.of("Israel")), LocalTime.now(ZoneId.of("Israel")));
-        Problem problem = new Problem(ObjectId.get().toString(), helpRequest.getRequestingUserId(), helpRequest.getProblemType(),
+        Problem problem = new Problem(ObjectId.get().toString(),
+                helpRequest.getRequestingUserId(),
+                helpRequest.getProblemType(),
                 helpRequest.getDescription(),
-                helpRequest.getGeoLocation(), helpRequest.getDirection(),
-                helpRequest.getStatus(), helpRequest.getExtra(),
+                helpRequest.getGeoLocation(),
+                helpRequest.getDirection(),
+                helpRequest.getStatus(),
+                helpRequest.getExtra(),
                 "", false,
                 now, helpRequest.getFbToken());
         mongoOperations.save(problem);
