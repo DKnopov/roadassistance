@@ -13,4 +13,5 @@ public interface IRoadAssistanceConstants {
     String GET_HELPER_COORDINATES = "/get_helper_coord";
     String GET_PROBLEMS_BY_FILTER = "/problems";
     String REGISTRATION = "/registration";
+    String CANCEL_PROBLEM = "/problem/cancel";
 }

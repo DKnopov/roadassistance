@@ -22,14 +22,13 @@ public class Problem implements Serializable {
     int status;
     int extra;
     String acceptingUserId;
-    boolean isSolved;
     LocalDateTime creationTime;
     String fbToken;
 
     public Problem() {
     }
 
-    public Problem(String problemId, String requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra, String acceptingUserId, boolean isSolved, LocalDateTime creationTime, String fbToken) {
+    public Problem(String problemId, String requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra, String acceptingUserId, LocalDateTime creationTime, String fbToken) {
         this.problemId = problemId;
         this.requestingUserId = requestingUserId;
         this.problemType = problemType;
@@ -39,7 +38,6 @@ public class Problem implements Serializable {
         this.status = status;
         this.extra = extra;
         this.acceptingUserId = acceptingUserId;
-        this.isSolved = isSolved;
         this.creationTime = creationTime;
         this.fbToken = fbToken;
     }
@@ -117,12 +115,8 @@ public class Problem implements Serializable {
         this.acceptingUserId = acceptingUserId;
     }
 
-    public boolean isSolved() {
-        return isSolved;
-    }
 
     public void setSolved(boolean isSolved) {
-        this.isSolved = isSolved;
     }
 
     public LocalDateTime getCreationTime() {

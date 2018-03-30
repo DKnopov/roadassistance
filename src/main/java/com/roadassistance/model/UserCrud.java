@@ -69,9 +69,18 @@ public class UserCrud implements IUser {
     }
 
     @Override
-    public GetHelperCoordinates getHelperCoordinates(String userEmail) {
-        User user = mongoOperations.findById(userEmail, User.class);
-        return new GetHelperCoordinates(user.getEmail(), user.getGeoLocation(), user.getDirection());
+    public GetHelperCoordinates getHelperCoordinates(String userId) {
+        User user = mongoOperations.findById(userId, User.class);
+        return new GetHelperCoordinates(user.getUserId(), user.getGeoLocation(), user.getDirection());
+    }
+
+    @Override
+    public boolean pushHelperLocation(PushHelperLocation pushHelperLocation) {
+        User user = mongoOperations.findById(pushHelperLocation.getUserId(), User.class);
+        user.setGeoLocation(pushHelperLocation.getGeoLocation());
+        user.setDirection(pushHelperLocation.getDirection());
+        mongoOperations.save(user);
+        return true;
     }
 
 

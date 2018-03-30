@@ -1,92 +1,82 @@
 package com.roadassistance.api.dto;
 
 public class HelpRequest {
-	String requestingUserId;
-	int problemType;
-	String description;
-	Location geoLocation;
-	double direction;
-	int status;
-	int extra;
-	String fbToken;
+    String requestingUserId;
+    int problemType;
+    String description;
+    Location geoLocation;
+    double direction;
+    int extra;
+    String fbToken;
 
-	public HelpRequest() {
-	}
+    public HelpRequest() {
+    }
 
-	public HelpRequest(String requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra, String fbToken) {
-		this.requestingUserId = requestingUserId;
-		this.problemType = problemType;
-		this.description = description;
-		this.geoLocation = geoLocation;
-		this.direction = direction;
-		this.status = status;
-		this.extra = extra;
-		this.fbToken = fbToken;
-	}
+    public HelpRequest(String requestingUserId, int problemType, String description, Location geoLocation, double direction, int extra, String fbToken) {
+        this.requestingUserId = requestingUserId;
+        this.problemType = problemType;
+        this.description = description;
+        this.geoLocation = geoLocation;
+        this.direction = direction;
+        this.extra = extra;
+        this.fbToken = fbToken;
+    }
 
-	public String getFbToken() {
-		return fbToken;
-	}
+    public String getFbToken() {
+        return fbToken;
+    }
 
-	public void setFbToken(String fbToken) {
-		this.fbToken = fbToken;
-	}
+    public void setFbToken(String fbToken) {
+        this.fbToken = fbToken;
+    }
 
-	public String getRequestingUserId() {
-		return requestingUserId;
-	}
+    public String getRequestingUserId() {
+        return requestingUserId;
+    }
 
-	public void setRequestingUserId(String requestingUserId) {
-		this.requestingUserId = requestingUserId;
-	}
+    public void setRequestingUserId(String requestingUserId) {
+        this.requestingUserId = requestingUserId;
+    }
 
-	public int getProblemType() {
-		return problemType;
-	}
+    public int getProblemType() {
+        return problemType;
+    }
 
-	public void setProblemType(int problemType) {
-		this.problemType = problemType;
-	}
+    public void setProblemType(int problemType) {
+        this.problemType = problemType;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public Location getGeoLocation() {
-		return geoLocation;
-	}
+    public Location getGeoLocation() {
+        return geoLocation;
+    }
 
-	public void setGeoLocation(Location geoLocation) {
-		this.geoLocation = geoLocation;
-	}
+    public void setGeoLocation(Location geoLocation) {
+        this.geoLocation = geoLocation;
+    }
 
-	public double getDirection() {
-		return direction;
-	}
+    public double getDirection() {
+        return direction;
+    }
 
-	public void setDirection(double direction) {
-		this.direction = direction;
-	}
+    public void setDirection(double direction) {
+        this.direction = direction;
+    }
 
-	public int getStatus() {
-		return status;
-	}
+    public int getExtra() {
+        return extra;
+    }
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	public int getExtra() {
-		return extra;
-	}
-
-	public void setExtra(int extra) {
-		this.extra = extra;
-	}
+    public void setExtra(int extra) {
+        this.extra = extra;
+    }
 
 
 }

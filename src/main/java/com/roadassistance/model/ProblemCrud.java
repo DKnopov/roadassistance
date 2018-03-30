@@ -43,9 +43,9 @@ public class ProblemCrud implements IProblem {
                 helpRequest.getDescription(),
                 helpRequest.getGeoLocation(),
                 helpRequest.getDirection(),
-                helpRequest.getStatus(),
+                1,
                 helpRequest.getExtra(),
-                "", false,
+                "",
                 now, helpRequest.getFbToken());
         mongoOperations.save(problem);
 
@@ -120,7 +120,7 @@ public class ProblemCrud implements IProblem {
                     p.getDirection(), p.getStatus(), p.getExtra());
             for (int i = 0; i < problemTypes.length; i++) {
                 if (problemTypes[i]) {
-                    if (p.getProblemType() == i + 1) {
+                    if (p.getProblemType() == i + 1 && p.getStatus() == 1) {
                         problemsByFilters.add(getProblemsByFilter);
                     }
                 }
@@ -128,6 +128,15 @@ public class ProblemCrud implements IProblem {
             //TODO problemtypes
         }
         return problemsByFilters;
+    }
+
+    @Override
+    public boolean cancelProblem(String problemId) {
+        Query query = new Query(Criteria.where("_id").is(problemId));
+        Update update = new Update();
+        update.set("status", -1);
+        mongoOperations.upsert(query, update, Problem.class);
+        return true;
     }
 
 }

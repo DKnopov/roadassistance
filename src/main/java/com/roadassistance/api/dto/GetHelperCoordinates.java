@@ -1,26 +1,32 @@
 package com.roadassistance.api.dto;
 
 public class GetHelperCoordinates {
-	String userEmail;
+	String userId;
 	Location geoLocation;
 	double direction;
-	public GetHelperCoordinates(String userEmail, Location geoLocation, double direction) {
-		this.userEmail = userEmail;
-		this.geoLocation = geoLocation;
-		this.direction = direction;
-	}
+
 	public GetHelperCoordinates() {
 	
 	}
-	public String getUserEmail() {
-		return userEmail;
+
+	public GetHelperCoordinates(String userId, Location geoLocation, double direction) {
+		this.userId = userId;
+		this.geoLocation = geoLocation;
+		this.direction = direction;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
+
 	public Location getGeoLocation() {
 		return geoLocation;
 	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public void setGeoLocation(Location geoLocation) {
 		this.geoLocation = geoLocation;
 	}

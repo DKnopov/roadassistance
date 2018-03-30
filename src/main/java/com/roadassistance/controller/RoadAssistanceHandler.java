@@ -71,14 +71,14 @@ public class RoadAssistanceHandler {
     @PostMapping(IRoadAssistanceConstants.PUSH_HELPER_LOCATION)
     @CrossOrigin
     public boolean pushHelperLocation(@RequestBody PushHelperLocation helperLoation) {
-        return false;
+        return userCrud.pushHelperLocation(helperLoation);
 
     }
 
     @GetMapping(IRoadAssistanceConstants.GET_HELPER_COORDINATES)
     @CrossOrigin
-    public GetHelperCoordinates getHelperLocation(@RequestParam long userId) {
-        return null;
+    public GetHelperCoordinates getHelperLocation(@RequestParam String userId) {
+        return userCrud.getHelperCoordinates(userId);
     }
 
     @GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_BY_FILTER)
@@ -96,8 +96,11 @@ public class RoadAssistanceHandler {
         return userCrud.registration(registration);
     }
 
-
-
+    @PostMapping(IRoadAssistanceConstants.CANCEL_PROBLEM)
+    @CrossOrigin
+    public boolean registration(@RequestParam String problemId) {
+        return problemCrud.cancelProblem(problemId);
+    }
 
 
 }

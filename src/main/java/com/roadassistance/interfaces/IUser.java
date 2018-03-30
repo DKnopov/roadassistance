@@ -12,5 +12,7 @@ public interface IUser {
     boolean leaveFeedback(Feedback feedback);
 
     GetHelperCoordinates getHelperCoordinates(String userEmail);
+
+    boolean pushHelperLocation(PushHelperLocation pushHelperLocation);
 }
 

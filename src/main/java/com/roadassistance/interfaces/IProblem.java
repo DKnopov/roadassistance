@@ -10,12 +10,14 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public interface IProblem {
-	boolean createHelprequest(HelpRequest helpRequest);
+    boolean createHelprequest(HelpRequest helpRequest);
 
-	boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest) throws ExecutionException, InterruptedException;
+    boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest) throws ExecutionException, InterruptedException;
 
-	boolean acceptHelp(AcceptHelp acceptHelp);
+    boolean acceptHelp(AcceptHelp acceptHelp);
 
-	Iterable<GetProblemsByFilter> getProblemsByFilter(double lng, double lat, double radius,
-												 boolean[] problemTypes);
+    Iterable<GetProblemsByFilter> getProblemsByFilter(double lng, double lat, double radius,
+                                                      boolean[] problemTypes);
+
+    boolean cancelProblem(String problemId);
 }
