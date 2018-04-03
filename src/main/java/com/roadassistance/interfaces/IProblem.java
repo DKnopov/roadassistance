@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public interface IProblem {
-    boolean createHelprequest(HelpRequest helpRequest);
+    String createHelprequest(HelpRequest helpRequest);
 
     boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest) throws ExecutionException, InterruptedException;
 

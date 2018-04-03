@@ -34,10 +34,11 @@ public class ProblemCrud implements IProblem {
     MongoOperations mongoOperations;
 
     @Override
-    public boolean createHelprequest(HelpRequest helpRequest) {
+    public String createHelprequest(HelpRequest helpRequest) {
 
         LocalDateTime now = LocalDateTime.of(LocalDate.now(ZoneId.of("Israel")), LocalTime.now(ZoneId.of("Israel")));
-        Problem problem = new Problem(ObjectId.get().toString(),
+        String problemId=ObjectId.get().toString();
+        Problem problem = new Problem(problemId,
                 helpRequest.getRequestingUserId(),
                 helpRequest.getProblemType(),
                 helpRequest.getDescription(),
@@ -54,7 +55,7 @@ public class ProblemCrud implements IProblem {
         update.set("geoLocation", problem.getGeoLocation());
         mongoOperations.upsert(query, update, User.class);
 
-        return true;
+        return problemId;
     }
 
     @Override

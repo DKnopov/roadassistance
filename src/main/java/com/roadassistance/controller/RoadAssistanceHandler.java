@@ -40,7 +40,7 @@ public class RoadAssistanceHandler {
 
     @PostMapping(IRoadAssistanceConstants.HELP_REQUEST)
     @CrossOrigin
-    public boolean createHelpRequest(@RequestBody HelpRequest helpRequest) throws ExecutionException, InterruptedException {
+    public String createHelpRequest(@RequestBody HelpRequest helpRequest) throws ExecutionException, InterruptedException {
         return problemCrud.createHelprequest(helpRequest);
     }
 
