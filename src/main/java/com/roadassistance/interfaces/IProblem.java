@@ -1,9 +1,6 @@
 package com.roadassistance.interfaces;
 
-import com.roadassistance.api.dto.AcceptHelp;
-import com.roadassistance.api.dto.GetProblemsByFilter;
-import com.roadassistance.api.dto.HelpRequest;
-import com.roadassistance.api.dto.RespondToHelpRequest;
+import com.roadassistance.api.dto.*;
 import com.roadassistance.entity.Problem;
 
 import java.util.List;
@@ -14,10 +11,14 @@ public interface IProblem {
 
     boolean respondToHelpRequest(RespondToHelpRequest respondToHelpRequest) throws ExecutionException, InterruptedException;
 
+    boolean respondToHelpRequestService(ServiceRespondToHelpRequest serviceRespondToHelpRequest) throws ExecutionException, InterruptedException;
+
     boolean acceptHelp(AcceptHelp acceptHelp);
 
     Iterable<GetProblemsByFilter> getProblemsByFilter(double lng, double lat, double radius,
                                                       boolean[] problemTypes);
+
+    Iterable<GetProblemsByFilter> getProblemsByFilterService(String garageId);
 
     boolean cancelProblem(String problemId);
 }

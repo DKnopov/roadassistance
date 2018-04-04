@@ -14,5 +14,7 @@ public interface IUser {
     GetHelperCoordinates getHelperCoordinates(String userEmail);
 
     boolean pushHelperLocation(PushHelperLocation pushHelperLocation);
+
+    GetUsersInfo getUserInfo(String userId);
 }
 

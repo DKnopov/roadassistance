@@ -14,4 +14,10 @@ public interface IRoadAssistanceConstants {
     String GET_PROBLEMS_BY_FILTER = "/problems";
     String REGISTRATION = "/registration";
     String CANCEL_PROBLEM = "/problem/cancel";
+    String EDIT_SERVICE_PROFILE = "/edit_service_profile";
+    String GET_SERVICE_PROFILE = "/get_service_profile";
+    String SERVICE_RESPOND = "/service_respond_help";
+    String SERVICE_REGISTRATION = "/service_registration";
+    String GET_PROBLEMS_SERVICE = "/get_problems_service";
+    String GET_USER_INFO = "/get_user_info";
 }

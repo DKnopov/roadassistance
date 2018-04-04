@@ -3,6 +3,7 @@ package com.roadassistance.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.roadassistance.api.dto.UserVehicle;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,12 +24,13 @@ public class Problem implements Serializable {
     int extra;
     String acceptingUserId;
     LocalDateTime creationTime;
+    UserVehicle userVehicle;
     String fbToken;
 
     public Problem() {
     }
 
-    public Problem(String problemId, String requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra, String acceptingUserId, LocalDateTime creationTime, String fbToken) {
+    public Problem(String problemId, String requestingUserId, int problemType, String description, Location geoLocation, double direction, int status, int extra, String acceptingUserId, LocalDateTime creationTime, UserVehicle userVehicle, String fbToken) {
         this.problemId = problemId;
         this.requestingUserId = requestingUserId;
         this.problemType = problemType;
@@ -39,6 +41,7 @@ public class Problem implements Serializable {
         this.extra = extra;
         this.acceptingUserId = acceptingUserId;
         this.creationTime = creationTime;
+        this.userVehicle = userVehicle;
         this.fbToken = fbToken;
     }
 
@@ -133,5 +136,13 @@ public class Problem implements Serializable {
 
     public void setFbToken(String fbToken) {
         this.fbToken = fbToken;
+    }
+
+    public UserVehicle getUserVehicle() {
+        return userVehicle;
+    }
+
+    public void setUserVehicle(UserVehicle userVehicle) {
+        this.userVehicle = userVehicle;
     }
 }

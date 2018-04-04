@@ -5,9 +5,9 @@ public class GetServiceProfile {
     String phone;
     String name;
     double rating;
-    Feedback feedback;
+    Feedback[] feedback;
 
-    public GetServiceProfile(String email, String phone, String name, double rating, Feedback feedback) {
+    public GetServiceProfile(String email, String phone, String name, double rating, Feedback[] feedback) {
         this.email = email;
         this.phone = phone;
         this.name = name;
@@ -50,11 +50,11 @@ public class GetServiceProfile {
         this.rating = rating;
     }
 
-    public Feedback getFeedback() {
+    public Feedback[] getFeedback() {
         return feedback;
     }
 
-    public void setFeedback(Feedback feedback) {
+    public void setFeedback(Feedback[] feedback) {
         this.feedback = feedback;
     }
 }

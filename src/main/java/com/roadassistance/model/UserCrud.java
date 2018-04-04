@@ -83,5 +83,15 @@ public class UserCrud implements IUser {
         return true;
     }
 
+    @Override
+    public GetUsersInfo getUserInfo(String userId) {
+        User user = mongoOperations.findById(userId, User.class);
+        GetUsersInfo getUsersInfo = new GetUsersInfo(
+                user.getEmail(), user.getPhone(),
+                user.getName(), user.getSurname(),
+                user.getUserPhoto(), user.getUserVehicles());
+        return getUsersInfo;
+    }
+
 
 }

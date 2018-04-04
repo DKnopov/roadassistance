@@ -7,18 +7,20 @@ public class HelpRequest {
     Location geoLocation;
     double direction;
     int extra;
+    UserVehicle userVehicle;
     String fbToken;
 
     public HelpRequest() {
     }
 
-    public HelpRequest(String requestingUserId, int problemType, String description, Location geoLocation, double direction, int extra, String fbToken) {
+    public HelpRequest(String requestingUserId, int problemType, String description, Location geoLocation, double direction, int extra, UserVehicle userVehicle, String fbToken) {
         this.requestingUserId = requestingUserId;
         this.problemType = problemType;
         this.description = description;
         this.geoLocation = geoLocation;
         this.direction = direction;
         this.extra = extra;
+        this.userVehicle = userVehicle;
         this.fbToken = fbToken;
     }
 
@@ -78,5 +80,11 @@ public class HelpRequest {
         this.extra = extra;
     }
 
+    public UserVehicle getUserVehicle() {
+        return userVehicle;
+    }
 
+    public void setUserVehicle(UserVehicle userVehicle) {
+        this.userVehicle = userVehicle;
+    }
 }

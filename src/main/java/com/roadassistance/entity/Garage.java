@@ -1,6 +1,15 @@
-package com.roadassistance.api.dto;
+package com.roadassistance.entity;
 
-public class EditServiceProfile {
+import com.roadassistance.api.dto.Feedback;
+import com.roadassistance.api.dto.Location;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
+
+@Document(collection = "garage")
+public class Garage implements Serializable {
+    @Id
     String garageId;
     String photo;
     String email;
@@ -10,8 +19,11 @@ public class EditServiceProfile {
     Location geoLocation;
     double distance;
     String[] brand;
+    double rating;
+    Feedback[] feedbacks;
+    String password;
 
-    public EditServiceProfile(String garageId, String photo, String email, String address, String phone, String companyName, Location geoLocation, double distance, String[] brand) {
+    public Garage(String garageId, String photo, String email, String address, String phone, String companyName, Location geoLocation, double distance, String[] brand, double rating, Feedback[] feedbacks, String password) {
         this.garageId = garageId;
         this.photo = photo;
         this.email = email;
@@ -21,9 +33,18 @@ public class EditServiceProfile {
         this.geoLocation = geoLocation;
         this.distance = distance;
         this.brand = brand;
+        this.rating = rating;
+        this.feedbacks = feedbacks;
+        this.password = password;
     }
 
-    public EditServiceProfile() {
+    public Garage(String garageId, String email, String password) {
+        this.garageId = garageId;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Garage() {
     }
 
     public String getGarageId() {
@@ -32,6 +53,14 @@ public class EditServiceProfile {
 
     public void setGarageId(String garageId) {
         this.garageId = garageId;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getEmail() {
@@ -66,7 +95,6 @@ public class EditServiceProfile {
         this.companyName = companyName;
     }
 
-
     public Location getGeoLocation() {
         return geoLocation;
     }
@@ -83,19 +111,35 @@ public class EditServiceProfile {
         this.distance = distance;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
     public String[] getBrand() {
         return brand;
     }
 
     public void setBrand(String[] brand) {
         this.brand = brand;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public Feedback[] getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(Feedback[] feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

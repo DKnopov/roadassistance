@@ -3,6 +3,7 @@ package com.roadassistance.controller;
 import java.util.concurrent.ExecutionException;
 
 import com.roadassistance.api.dto.*;
+import com.roadassistance.interfaces.IGarage;
 import com.roadassistance.interfaces.IUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,8 @@ public class RoadAssistanceHandler {
     IProblem problemCrud;
     @Autowired
     IUser userCrud;
+    @Autowired
+    IGarage garageCrud;
 
     @PostMapping(IRoadAssistanceConstants.RESPOND_HELP)
     @CrossOrigin
@@ -58,8 +61,8 @@ public class RoadAssistanceHandler {
 
     @GetMapping(IRoadAssistanceConstants.VIEW_PROFILE)
     @CrossOrigin
-    public ViewProfile viewProfile(@RequestParam String userPhone) {
-        return userCrud.viewProfile(userPhone);
+    public ViewProfile viewProfile(@RequestParam String userId) {
+        return userCrud.viewProfile(userId);
     }
 
     @PostMapping(IRoadAssistanceConstants.LEAVE_FEEDBACK)
@@ -98,9 +101,49 @@ public class RoadAssistanceHandler {
 
     @PostMapping(IRoadAssistanceConstants.CANCEL_PROBLEM)
     @CrossOrigin
-    public boolean registration(@RequestParam String problemId) {
+    public boolean cancel(@RequestParam String problemId) {
         return problemCrud.cancelProblem(problemId);
     }
+
+    @PutMapping(IRoadAssistanceConstants.EDIT_SERVICE_PROFILE)
+    @CrossOrigin
+    public void editServiceProfile(@RequestBody EditServiceProfile editServiceProfile) {
+        garageCrud.editServiceProfile(editServiceProfile);
+    }
+
+    @GetMapping(IRoadAssistanceConstants.GET_SERVICE_PROFILE)
+    @CrossOrigin
+    public GetServiceProfile getServiceProfile(@RequestParam String garageId) {
+        return garageCrud.getServiceProfile(garageId);
+    }
+
+    @PostMapping(IRoadAssistanceConstants.SERVICE_RESPOND)
+    @CrossOrigin
+    public boolean serviceRespondToHelpRequest(@RequestBody ServiceRespondToHelpRequest serviceRespondToHelpRequest) throws ExecutionException, InterruptedException {
+        return problemCrud.respondToHelpRequestService(serviceRespondToHelpRequest);
+    }
+
+    @PostMapping(IRoadAssistanceConstants.SERVICE_REGISTRATION)
+    @CrossOrigin
+    public boolean registrationService(@RequestBody Registration registration) {
+        return garageCrud.registrationService(registration);
+    }
+
+    @GetMapping(IRoadAssistanceConstants.GET_PROBLEMS_SERVICE)
+    @CrossOrigin
+    public Iterable<GetProblemsByFilter> getProblemsByFilterService(@RequestParam String garageId) {
+
+        return problemCrud.getProblemsByFilterService(garageId);
+
+    }
+
+
+    @GetMapping(IRoadAssistanceConstants.GET_USER_INFO)
+    @CrossOrigin
+    public GetUsersInfo getUsersInfo(@RequestParam String userId) {
+        return userCrud.getUserInfo(userId);
+    }
+
 
 
 }
