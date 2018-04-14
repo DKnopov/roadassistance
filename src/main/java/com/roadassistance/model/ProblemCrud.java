@@ -173,10 +173,15 @@ public class ProblemCrud implements IProblem {
                     p.getRequestingUserId(), p.getProblemType(),
                     p.getDescription(), p.getGeoLocation(),
                     p.getDirection(), p.getStatus(), p.getExtra());
-            for (int i = 0; i < garage.getBrand().length; i++) {
-                if (garage.getBrand()[i].equals(p.getUserVehicle().getBrand())) {
+            try {
+                for (int i = 0; i < garage.getBrand().length; i++) {
+                    if ((garage.getBrand()[i].equalsIgnoreCase(p.getUserVehicle().getBrand())) && p.getStatus() == 1) {
                         problemsByFilters.add(getProblemsByFilter);
+                    }
                 }
+            }
+            catch (NullPointerException e){
+                
             }
             //TODO problemtypes
         }

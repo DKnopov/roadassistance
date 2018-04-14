@@ -2,10 +2,8 @@ package com.roadassistance.model;
 
 import com.roadassistance.api.dto.EditServiceProfile;
 import com.roadassistance.api.dto.GetServiceProfile;
-import com.roadassistance.api.dto.GetUsersInfo;
 import com.roadassistance.api.dto.Registration;
 import com.roadassistance.entity.Garage;
-import com.roadassistance.entity.User;
 import com.roadassistance.interfaces.IGarage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -36,7 +34,7 @@ public class GarageCrud implements IGarage {
         GetServiceProfile getServiceProfile = new GetServiceProfile(
                 garage.getEmail(), garage.getPhone(),
                 garage.getCompanyName(), garage.getRating(),
-                garage.getFeedbacks());
+                garage.getFeedbacks(), garage.getDistance());
         return getServiceProfile;
     }
 

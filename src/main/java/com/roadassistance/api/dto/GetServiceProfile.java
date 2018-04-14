@@ -6,13 +6,15 @@ public class GetServiceProfile {
     String name;
     double rating;
     Feedback[] feedback;
+    double distance;
 
-    public GetServiceProfile(String email, String phone, String name, double rating, Feedback[] feedback) {
+    public GetServiceProfile(String email, String phone, String name, double rating, Feedback[] feedback, double distance) {
         this.email = email;
         this.phone = phone;
         this.name = name;
         this.rating = rating;
         this.feedback = feedback;
+        this.distance = distance;
     }
 
     public GetServiceProfile() {
@@ -52,6 +54,14 @@ public class GetServiceProfile {
 
     public Feedback[] getFeedback() {
         return feedback;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public void setFeedback(Feedback[] feedback) {
