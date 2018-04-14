@@ -5,11 +5,15 @@ import com.roadassistance.api.dto.Location;
 import com.roadassistance.api.dto.UserVehicle;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
 
 @Document(collection = "user")
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
     @Id
     String userId;
     String email;
@@ -45,6 +49,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public User(String email) {
+        this.userId = email;
+        this.email = email;
+    }
+
     public User(String userId, String email, String password) {
         this.userId = userId;
         this.email = email;
@@ -59,8 +68,38 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return userId;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {
@@ -169,5 +208,9 @@ public class User implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public Date getLastPasswordResetDate() {
+        return null;
     }
 }

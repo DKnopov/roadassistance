@@ -174,8 +174,8 @@ public class ProblemCrud implements IProblem {
                     p.getDescription(), p.getGeoLocation(),
                     p.getDirection(), p.getStatus(), p.getExtra());
             for (int i = 0; i < garage.getBrand().length; i++) {
-                if (garage.getBrand()[i].equals(p.getUserVehicle().getBrand())) {
-                        problemsByFilters.add(getProblemsByFilter);
+                if ((garage.getBrand()[i].equalsIgnoreCase(p.getUserVehicle().getBrand())) && p.getStatus() == 1) {
+                    problemsByFilters.add(getProblemsByFilter);
                 }
             }
             //TODO problemtypes
