@@ -15,6 +15,6 @@ public interface IUser {
 
     boolean pushHelperLocation(PushHelperLocation pushHelperLocation);
 
-    GetUsersInfo getUserInfo(String userId);
+    Iterable<GetUsersInfo> getUserInfo(String[] userId);
 }
 

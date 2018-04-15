@@ -1,22 +1,14 @@
 package com.roadassistance.controller;
 
-import java.util.concurrent.ExecutionException;
-
 import com.roadassistance.api.dto.*;
 import com.roadassistance.interfaces.IGarage;
-import com.roadassistance.interfaces.IUser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.roadassistance.interfaces.IProblem;
 import com.roadassistance.interfaces.IRoadAssistanceConstants;
+import com.roadassistance.interfaces.IUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.ExecutionException;
 
 @RestController
 public class RoadAssistanceHandler {
@@ -140,7 +132,7 @@ public class RoadAssistanceHandler {
 
     @GetMapping(IRoadAssistanceConstants.GET_USER_INFO)
     @CrossOrigin
-    public GetUsersInfo getUsersInfo(@RequestParam String userId) {
+    public Iterable<GetUsersInfo> getUsersInfo(@RequestParam String[] userId) {
         return userCrud.getUserInfo(userId);
     }
 

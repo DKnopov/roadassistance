@@ -10,6 +10,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class UserCrud implements IUser {
     @Autowired
@@ -84,14 +87,19 @@ public class UserCrud implements IUser {
     }
 
     @Override
-    public GetUsersInfo getUserInfo(String userId) {
-        User user = mongoOperations.findById(userId, User.class);
-        GetUsersInfo getUsersInfo = new GetUsersInfo(
-                user.getEmail(), user.getPhone(),
-                user.getName(), user.getSurname(),
-                user.getUserPhoto(), user.getUserVehicles());
-        return getUsersInfo;
+    public Iterable<GetUsersInfo> getUserInfo(String[] userId) {
+        List<GetUsersInfo> list = new ArrayList<>();
+        User user;
+        GetUsersInfo getUsersInfo;
+        for (int i = 0; i < userId.length; i++) {
+            user = mongoOperations.findById(userId[i], User.class);
+            getUsersInfo = new GetUsersInfo(
+                    user.getEmail(), user.getPhone(),
+                    user.getName(), user.getSurname(),
+                    user.getUserPhoto(), user.getUserVehicles());
+            list.add(getUsersInfo);
+        }
+        return list;
     }
-
 
 }
